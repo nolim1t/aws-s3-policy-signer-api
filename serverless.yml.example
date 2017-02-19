@@ -1,0 +1,17 @@
+service: aws-nodejs # NOTE: update this with your service name
+provider:
+  name: aws
+  runtime: nodejs4.3
+  stage: "1"
+  region: us-east-1
+  environment:
+    AWSKEY: "enter your key here"
+    AWSSECRET: "enter your secret here"
+functions:
+  hello:
+    handler: handler.s3signature
+    events:
+      - http:
+          path: /generate-policy
+          method: get
+          cors: true
